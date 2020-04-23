@@ -7,7 +7,7 @@ import java.util.Date;
  * @author Ayoub
  *
  */
-public class Movimenti {
+public class Movimento {
 	
 	private int nConto;
 	private BigDecimal impMovimento;
