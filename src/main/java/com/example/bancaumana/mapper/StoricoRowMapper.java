@@ -16,6 +16,7 @@ public class StoricoRowMapper implements RowMapper<Storico> {
 	@Override
 	public Storico mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Storico storico = new Storico();
+		
 		storico.setnConto(rs.getString("sto_numeroconto"));
 		storico.setImpMovimento(rs.getBigDecimal("sto_importomovimento"));
 		
@@ -23,10 +24,8 @@ public class StoricoRowMapper implements RowMapper<Storico> {
 		storico.setDataMovimento(data);
 		
 		storico.setOraMovimento(rs.getInt("sto_oramovimento"));
-		storico.setDescrizione(rs.getString("sto_descrizione"));
+		storico.setDescrizione(rs.getString("sto_desmovimento"));
 		storico.setCausale(rs.getString("sto_causale"));
-		
-		
 		
 		return storico;
 	}
