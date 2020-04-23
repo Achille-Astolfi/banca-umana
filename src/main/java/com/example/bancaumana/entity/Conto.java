@@ -1,7 +1,11 @@
 package com.example.bancaumana.entity;
 
 import java.math.BigDecimal;
-
+/**
+ * 
+ * @author Laura
+ *
+ */
 public class Conto {
 	
 	private String nConto;

@@ -2,7 +2,11 @@ package com.example.bancaumana.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
+/**
+ * 
+ * @author Ayoub
+ *
+ */
 public class Movimenti {
 	
 	private int nConto;
