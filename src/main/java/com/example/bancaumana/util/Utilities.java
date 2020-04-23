@@ -3,7 +3,11 @@ package com.example.bancaumana.util;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+/**
+ * 
+ * @author Petrut
+ *
+ */
 public class Utilities {
 	private Utilities() {}
 	

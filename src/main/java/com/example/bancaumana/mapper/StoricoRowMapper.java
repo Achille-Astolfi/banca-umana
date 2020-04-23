@@ -9,7 +9,11 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.example.bancaumana.entity.Storico;
 import com.example.bancaumana.util.Utilities;
-
+/**
+ * 
+ * @author Petrut
+ *
+ */
 public class StoricoRowMapper implements RowMapper<Storico> {
 
 
