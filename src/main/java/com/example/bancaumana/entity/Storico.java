@@ -12,7 +12,7 @@ import com.example.bancaumana.util.Utilities;
 public class Storico {
 	private String nConto;
 	private BigDecimal impMovimento;
-	private Utilities dataMovimento;
+	private Date dataMovimento;
 	private int oraMovimento;
 	private String descrizione;
 	private String causale;
@@ -30,10 +30,10 @@ public class Storico {
 	public void setImpMovimento(BigDecimal impMovimento) {
 		this.impMovimento = impMovimento;
 	}
-	public Utilities getDataMovimento() {
+	public Date getDataMovimento() {
 		return dataMovimento;
 	}
-	public void setDataMovimento(Utilities dataMovimento) {
+	public void setDataMovimento(Date dataMovimento) {
 		this.dataMovimento = dataMovimento;
 	}
 	public int getOraMovimento() {
