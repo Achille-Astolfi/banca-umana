@@ -9,7 +9,7 @@ import java.util.Date;
  */
 public class Movimento {
 	
-	private int nConto;
+	private String nConto;
 	private BigDecimal impMovimento;
 	private Date dataMovimento;
 	private int oraMovimento;
@@ -19,10 +19,10 @@ public class Movimento {
 	
 	// GETTER AND SETTER
 	
-	public int getnConto() {
+	public String getnConto() {
 		return nConto;
 	}
-	public void setnConto(int nConto) {
+	public void setnConto(String nConto) {
 		this.nConto = nConto;
 	}
 	public BigDecimal getImpMovimento() {
