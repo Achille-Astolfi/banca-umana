@@ -22,4 +22,7 @@ public class Utilities {
 		}  
 		return date;
 	}
+	public static String formatDateToString(Date date) {
+		return ""+(date.getYear()+1900)+(date.getMonth()+1)+date.getDate();
+	}
 }
