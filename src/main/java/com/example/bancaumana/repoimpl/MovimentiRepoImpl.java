@@ -11,7 +11,11 @@ import org.springframework.stereotype.Repository;
 
 import com.example.bancaumana.entity.Movimento;
 import com.example.bancaumana.mapper.MovimentoRowMapper;
-
+/**
+ * 
+ * @author Riccardo
+ *
+ */
 @Repository
 public class MovimentiRepoImpl extends JdbcDaoSupport {
 	@Autowired
