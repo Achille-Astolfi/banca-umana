@@ -1,5 +1,6 @@
 package com.example.bancaumana.util;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,6 +24,7 @@ public class Utilities {
 		return date;
 	}
 	public static String formatDateToString(Date date) {
-		return ""+(date.getYear()+1900)+(date.getMonth()+1)+date.getDate();
+		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");  
+		return  dateFormat.format(date);
 	}
 }
