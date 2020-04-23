@@ -23,7 +23,7 @@ public class StoricoRowMapper implements RowMapper<Storico> {
 		storico.setDataMovimento(data);
 		
 		storico.setOraMovimento(rs.getInt("sto_oramovimento"));
-		storico.setDescrizione(rs.getString("sto_descrizione"));
+		storico.setDescrizione(rs.getString("sto_desmovimento"));
 		storico.setCausale(rs.getString("sto_causale"));
 		
 		
