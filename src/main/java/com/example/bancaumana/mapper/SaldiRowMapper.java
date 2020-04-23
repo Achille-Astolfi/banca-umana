@@ -6,7 +6,11 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.RowMapper;
 import com.example.bancaumana.entity.Conto;
 import com.example.bancaumana.entity.Saldi;
-
+/**
+ * 
+ * @author Stefano
+ *
+ */
 public class SaldiRowMapper implements RowMapper<Saldi>{
 	
 	@Override
