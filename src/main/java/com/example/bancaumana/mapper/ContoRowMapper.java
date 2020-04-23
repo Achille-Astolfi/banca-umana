@@ -9,7 +9,11 @@ import java.util.List;
 import org.springframework.jdbc.core.RowMapper;
 
 import com.example.bancaumana.entity.Conto;
-
+/**
+ * 
+ * @author Jacopo
+ *
+ */
 public class ContoRowMapper implements RowMapper<Conto> {
 
 		
