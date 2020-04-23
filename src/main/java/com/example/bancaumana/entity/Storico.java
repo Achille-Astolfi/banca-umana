@@ -2,6 +2,8 @@ package com.example.bancaumana.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
+import com.example.bancaumana.util.Utilities;
 /**
  * 
  * @author Riccardo
@@ -10,7 +12,7 @@ import java.util.Date;
 public class Storico {
 	private String nConto;
 	private BigDecimal impMovimento;
-	private Date dataMovimento;
+	private Utilities dataMovimento;
 	private int oraMovimento;
 	private String descrizione;
 	private String causale;
@@ -28,10 +30,10 @@ public class Storico {
 	public void setImpMovimento(BigDecimal impMovimento) {
 		this.impMovimento = impMovimento;
 	}
-	public Date getDataMovimento() {
+	public Utilities getDataMovimento() {
 		return dataMovimento;
 	}
-	public void setDataMovimento(Date dataMovimento) {
+	public void setDataMovimento(Utilities dataMovimento) {
 		this.dataMovimento = dataMovimento;
 	}
 	public int getOraMovimento() {
