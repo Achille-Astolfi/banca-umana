@@ -8,6 +8,7 @@ public class Utilities {
 	private Utilities() {}
 	
 	public static Date parseDatabaseDate(String dataDb) {
+//		Date data = Utilities.parseDatabaseDate(rs.getString("sto_datamovimento"));
 		Date date = new Date();  
 		try {
 			date=new SimpleDateFormat("yyyyMMdd").parse(dataDb);
