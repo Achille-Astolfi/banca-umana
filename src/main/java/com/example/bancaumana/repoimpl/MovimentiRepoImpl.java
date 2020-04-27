@@ -62,7 +62,7 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 		BigDecimal saldo = null;
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		saldo = jdbcTemplate.queryForObject("SELECT * SUM(COALESCE(mov_importomovimento, 0))" + "FROM movimenti\r\n"
-				+ "WHERE (mov_stato = 2 or mov_stato = 1 AND mov_importomovimento < 0) " + "AND ? = sal_numeroconto",
+				+ "WHERE (mov_stato = 2 or mov_stato = 1 AND mov_importomovimento < 0) " + "AND ? = mov_numeroconto",
 				BigDecimal.class, nConto);
 		if (saldo == null) {
 			saldo = BigDecimal.ZERO;
