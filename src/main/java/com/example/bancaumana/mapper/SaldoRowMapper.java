@@ -1,14 +1,13 @@
 package com.example.bancaumana.mapper;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.Date;
 
 import org.springframework.jdbc.core.RowMapper;
-import com.example.bancaumana.entity.Conto;
+
 import com.example.bancaumana.entity.Saldo;
+import com.example.bancaumana.util.Utilities;
 
 /**
  * 
@@ -24,7 +23,8 @@ public class SaldoRowMapper implements RowMapper<Saldo> {
 		// BEGIN set dei valori   
 
 		saldo.setnConto(rs.getString("sal_numeroconto"));
-		saldo.setDataSaldo(rs.getDate("sal_datasaldo"));
+		Date data = Utilities.parseDatabaseDate(rs.getString("sal_datasaldo"));
+		saldo.setDataSaldo(data);
 		saldo.setImpSaldo(rs.getBigDecimal("columnIndex"));
 		
 		// END set dei valori
