@@ -21,7 +21,7 @@ public class MovimentoRowMapper implements RowMapper<Movimento>{
 		Movimento movimento = new Movimento();
 		
 		movimento.setnConto(rs.getString("mov_numeroconto"));
-		movimento.setImpMovimento(rs.getBigDecimal("mov_importomovimenti"));
+		movimento.setImpMovimento(rs.getBigDecimal("mov_importomovimento"));
 		movimento.setDataMovimento(Utilities.parseDatabaseDate(rs.getString("mov_datamovimento")));
 		movimento.setOraMovimento(rs.getInt("mov_oramovimento"));
 		movimento.setDescrizione(rs.getString("mov_desmovimento"));

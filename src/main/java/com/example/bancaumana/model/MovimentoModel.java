@@ -1,62 +1,49 @@
 package com.example.bancaumana.model;
 
 import java.math.BigDecimal;
+import java.sql.Date;
 
 import org.springframework.hateoas.core.Relation;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Relation(collectionRelation = "movimenti")
 public class MovimentoModel {
+
 	
-private	BigDecimal mov_numeroconto;
-private	int mov_stato;
-private	float mov_importomovimento;
-private	BigDecimal mov_datamovimento;
-private	int mov_oramovimento;
-private	String mov_causale;
-private	String mov_desmovimento;
+	@JsonProperty("movimenti")
+	String movimenti;
+	@JsonProperty("importo")
+	BigDecimal importo;
+	@JsonProperty("data")
+	Date data;
+	@JsonProperty("descrizione")
+	String descrizione;
 	
-	public BigDecimal getMov_numeroconto() {
-		return mov_numeroconto;
+	
+	public String getMovimenti() {
+		return movimenti;
 	}
-	public void setMov_numeroconto(BigDecimal mov_numeroconto) {
-		this.mov_numeroconto = mov_numeroconto;
+	public void setMovimenti(String movimenti) {
+		this.movimenti = movimenti;
 	}
-	public int getMov_stato() {
-		return mov_stato;
+	public BigDecimal getImporto() {
+		return importo;
 	}
-	public void setMov_stato(int mov_stato) {
-		this.mov_stato = mov_stato;
+	public void setImporto(BigDecimal importo) {
+		this.importo = importo;
 	}
-	public float getMov_importomovimento() {
-		return mov_importomovimento;
+	public Date getData() {
+		return data;
 	}
-	public void setMov_importomovimento(float mov_importomovimento) {
-		this.mov_importomovimento = mov_importomovimento;
+	public void setData(Date data) {
+		this.data = data;
 	}
-	public BigDecimal getMov_datamovimento() {
-		return mov_datamovimento;
+	public String getDescrizione() {
+		return descrizione;
 	}
-	public void setMov_datamovimento(BigDecimal mov_datamovimento) {
-		this.mov_datamovimento = mov_datamovimento;
-	}
-	public int getMov_oramovimento() {
-		return mov_oramovimento;
-	}
-	public void setMov_oramovimento(int mov_oramovimento) {
-		this.mov_oramovimento = mov_oramovimento;
-	}
-	public String getMov_causale() {
-		return mov_causale;
-	}
-	public void setMov_causale(String mov_causale) {
-		this.mov_causale = mov_causale;
-	}
-	public String getMov_desmovimento() {
-		return mov_desmovimento;
-	}
-	public void setMov_desmovimento(String mov_desmovimento) {
-		this.mov_desmovimento = mov_desmovimento;
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
 }

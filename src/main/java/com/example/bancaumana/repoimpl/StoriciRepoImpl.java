@@ -40,14 +40,9 @@ public class StoriciRepoImpl extends JdbcDaoSupport {
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		StoricoRowMapper storicoRowMapper = new StoricoRowMapper();
 		
-		String query = "SELECT sto_numeroconto,      " +
-				               "sto_importomovimento," +
-				               "sto_datamovimento,   " +
-				               "sto_oramovimento     " +
-				               "sto_desmovimento     " +
-				               "sto_causale          " +
-				               "FROM storico         " +
-				               "WHERE conto = sto_numeroconto = ?";
+		String query = "SELECT *                 " +
+				       "FROM storico             " +
+                       "WHERE sto_numeroconto = ?" ;
 		
 		List<Storico> lista = jdbcTemplate.query(query, storicoRowMapper, conto);
 		return lista;
