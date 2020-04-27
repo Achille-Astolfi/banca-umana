@@ -8,6 +8,11 @@ import com.example.bancaumana.repoimpl.ContiRepoImpl;
 import com.example.bancaumana.repoimpl.MovimentiRepoImpl;
 import com.example.bancaumana.repoimpl.SaldiRepoImpl;
 
+/**
+ * 
+ * @author Jacopo
+ *
+ */
 @Service
 public class ContoServiceImpl {
 	@Autowired
