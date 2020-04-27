@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.bancaumana.entity.Conto;
 import com.example.bancaumana.mapper.ContoRowMapper;
-import com.example.bancaumana.service.ContiRepo;
+import com.example.bancaumana.repo.ContiRepo;
 /**
  * 
  * @author Petrut

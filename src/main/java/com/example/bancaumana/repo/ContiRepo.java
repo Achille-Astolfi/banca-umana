@@ -1,4 +1,4 @@
-package com.example.bancaumana.service;
+package com.example.bancaumana.repo;
 
 import com.example.bancaumana.entity.Conto;
 
