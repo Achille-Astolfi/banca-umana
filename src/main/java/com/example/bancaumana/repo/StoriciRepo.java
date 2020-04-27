@@ -7,8 +7,9 @@ import com.example.bancaumana.entity.Storico;
 /***
  * @author SpiderXD
  */
-public interface StoricoRepo {
+
+public interface StoriciRepo {
 	
-	List<Storico> elencoStorico(String conto);
+	List<Storico> elencoStorici(String conto);
 
 }
