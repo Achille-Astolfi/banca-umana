@@ -13,14 +13,25 @@ import com.example.bancaumana.repoimpl.SaldiRepoImpl;
  * @author Jacopo
  *
  */
-@Service
+@Service("contoService")
 public class ContoServiceImpl {
-	@Autowired
+	
+	
 	MovimentiRepoImpl movimentiRepository;
-	@Autowired
+	
+	
 	SaldiRepoImpl saldiRepository;
-	@Autowired
+	
+	
 	ContiRepoImpl contiRepository;
+	
+	 @Autowired
+	 public ContoServiceImpl(MovimentiRepoImpl movimentiRepository,SaldiRepoImpl saldiRepository,ContiRepoImpl contiRepository ) {
+	   this.movimentiRepository = movimentiRepository;
+	   this.saldiRepository = saldiRepository;
+	   this.contiRepository = contiRepository;
+	   
+	 }
 	
 	public ContoModel findConto(String nConto) {
 		ContoModel contoCorrente=new ContoModel();
