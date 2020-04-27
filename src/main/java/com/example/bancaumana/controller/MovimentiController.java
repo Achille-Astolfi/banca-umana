@@ -35,9 +35,10 @@ public class MovimentiController {
 		try {
 			movimenti = movimentiService.getMovimenti(conto);
 			resource = new MovimentiResources(movimenti);
+			resource.computeLinks(conto); 
 			status = HttpStatus.OK;
 		} catch (Exception e) {
-			status = HttpStatus.SERVICE_UNAVAILABLE;
+			status = HttpStatus.BAD_GATEWAY;
 		}
 		
 		return new ResponseEntity<MovimentiResources>(resource, status);
