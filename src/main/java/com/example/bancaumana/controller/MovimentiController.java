@@ -19,7 +19,7 @@ public class MovimentiController {
 
 	@GetMapping("/{conto}")
 	public ResponseEntity<MovimentiResources> getMovimenti(@PathVariable("conto") String conto) {
-		MovimentiResources resource =  null;
+		MovimentiResources resource =  new MovimentiResources();
 		List<MovimentoModel> movimenti = new ArrayList<>();
 		
 		try {
@@ -35,7 +35,7 @@ public class MovimentiController {
 	
 	@GetMapping("/{conto}/{id}")
 	public ResponseEntity<MovimentiResources> getMovimentiStorico(@PathVariable("conto") String conto, @PathVariable("id") int id) {
-		MovimentiResources resource =  null;
+		MovimentiResources resource =  new MovimentiResources();
 		List<MovimentoModel> movimenti = new ArrayList<>();
 		
 		try {
