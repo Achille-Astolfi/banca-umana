@@ -3,7 +3,11 @@ package com.example.bancaumana.model;
 import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
+/**
+ * 
+ * @author Giovanni
+ *
+ */
 public class ContoModel {
 	
 	@JsonProperty("cc")
