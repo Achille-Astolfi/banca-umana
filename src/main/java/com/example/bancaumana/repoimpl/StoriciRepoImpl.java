@@ -27,24 +27,30 @@ public class StoriciRepoImpl extends JdbcDaoSupport {
 		this.setDataSource(dataSource);
 	}
 		
-	public List<Storico> getStorico() {
+	public void dummy() {
 		
 			JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 			StoricoRowMapper storicoRowMapper = new StoricoRowMapper();
-			
-			String query = "SELECT sto_numeroconto,      " +
-					               "sto_importomovimento," +
-					               "sto_datamovimento,   " +
-					               "sto_oramovimento     " +
-					               "sto_desmovimento     " +
-					               "sto_causale          " +
-					               "FROM storico         " ;
-			
-			List<Storico> lista = jdbcTemplate.query(query, storicoRowMapper);
-			return lista;
+			List<Storico> lista = jdbcTemplate.query("SELECT bla bla bla", storicoRowMapper, "param1", "param2");
 		}
 	
 	// BEGIN IO LAVORO QUI
+	public List<Storico> getStorico() {
+		
+		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
+		StoricoRowMapper storicoRowMapper = new StoricoRowMapper();
+		
+		String query = "SELECT sto_numeroconto,      " +
+				               "sto_importomovimento," +
+				               "sto_datamovimento,   " +
+				               "sto_oramovimento     " +
+				               "sto_desmovimento     " +
+				               "sto_causale          " +
+				               "FROM storico         " ;
+		
+		List<Storico> lista = jdbcTemplate.query(query, storicoRowMapper);
+		return lista;
+	}
 	
 	// END IO LAVORO QUI
 
