@@ -10,8 +10,6 @@ import com.example.bancaumana.entity.Movimento;
 import com.example.bancaumana.model.MovimentoModel;
 import com.example.bancaumana.repo.MovimentiRepo;
 import com.example.bancaumana.repo.StoriciRepo;
-import com.example.bancaumana.repoimpl.MovimentiRepoImpl;
-import com.example.bancaumana.repoimpl.StoriciRepoImpl;
 import com.example.bancaumana.service.MovimentiService;
 
 @Service
@@ -26,7 +24,11 @@ public class MovimentiServiceImpl implements MovimentiService{
 	
 	public List<MovimentoModel> getMovimenti(String conto){
 		
-		return null;
+		List<Movimento> listaMovimento = movimentiRepository.elencoMovimenti(conto);
+		
+		List<MovimentoModel> listaMovimentoModel = convertToListModel(listaMovimento);
+		
+		return listaMovimentoModel;
 	}
 	
 	public List<MovimentoModel> convertToListModel(List<Movimento> list)
