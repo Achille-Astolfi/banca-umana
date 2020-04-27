@@ -46,8 +46,8 @@ public class SaldiRepoImpl extends JdbcDaoSupport{
 		
 		SaldoRowMapper saldoRowMapper = new SaldoRowMapper();
 		
-		String data = "20200423";
-		List<Saldo> saldo = jdbcTemplate.query("SELECT * FROM bancaumana.saldi where sal_numeroconto AND sal_datasaldo = ? , ?" ,saldoRowMapper,nSaldo,data);
+		String dataSaldo = "20200423";
+		List<Saldo> saldo = jdbcTemplate.query("SELECT * FROM bancaumana.saldi where sal_numeroconto AND sal_datasaldo = ? , ?" ,saldoRowMapper,nSaldo,dataSaldo);
 		
 		if(saldo.size()>0) {
 			return saldo.get(0) ;
