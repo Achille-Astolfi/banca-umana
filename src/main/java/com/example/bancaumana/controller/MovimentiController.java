@@ -37,7 +37,7 @@ public class MovimentiController {
 			resource = new MovimentiResources(movimenti);
 			status = HttpStatus.OK;
 		} catch (Exception e) {
-			// TODO: handle exception
+			status = HttpStatus.SERVICE_UNAVAILABLE;
 		}
 		
 		return new ResponseEntity<MovimentiResources>(resource, status);
