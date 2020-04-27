@@ -39,10 +39,13 @@ public class StoriciRepoImpl extends JdbcDaoSupport {
 		
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		StoricoRowMapper storicoRowMapper = new StoricoRowMapper();
-		
+		// da modificare e estrarre solo le 5 prime righe
 		String query = "SELECT *                 " +
 				       "FROM storico             " +
-                       "WHERE sto_numeroconto = ?" ;
+                       "WHERE sto_numeroconto = ?" +
+				       "ORDER BY sto_id" + 
+				       "OFFSET 0 ROWS" + 
+				       "FETCH NEXT 5 ROWS ONLY";
 		
 		List<Storico> lista = jdbcTemplate.query(query, storicoRowMapper, conto);
 		return lista;
