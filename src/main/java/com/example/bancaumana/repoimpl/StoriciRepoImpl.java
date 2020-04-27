@@ -47,7 +47,7 @@ public class StoriciRepoImpl extends JdbcDaoSupport {
 				               "sto_desmovimento     " +
 				               "sto_causale          " +
 				               "FROM storico         " +
-				               "WHERE conto = sto_numeroconto = ?";
+				               "WHERE sto_numeroconto = ?";
 		
 		List<Storico> lista = jdbcTemplate.query(query, storicoRowMapper, conto);
 		return lista;
