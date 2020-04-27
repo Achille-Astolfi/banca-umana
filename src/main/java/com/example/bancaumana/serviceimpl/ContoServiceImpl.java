@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.bancaumana.entity.Conto;
+import com.example.bancaumana.entity.Saldo;
 import com.example.bancaumana.model.ContoModel;
 import com.example.bancaumana.repo.ContiRepo;
 import com.example.bancaumana.repo.MovimentiRepo;
@@ -38,9 +39,13 @@ public class ContoServiceImpl implements ContoService {
 		ContoModel contoCorrente=new ContoModel();
 		Conto conto = contiRepository.findByNumeroConto(nConto);
 		Date data = new GregorianCalendar(2020, 3, 23).getTime();
+		
 		contoCorrente.setCc(conto.getnConto());
-		contoCorrente.setSaldo(movimentiRepository.sommaSaldo(nConto, data));
+		
+		Saldo saldo = saldiRepository.findBySaldo(nConto);
+		contoCorrente.setSaldo(saldo.getImpSaldo());
 		contoCorrente.setDisponibile(contoCorrente.getSaldo().add(conto.getFido()));
+		
 		contoCorrente.setDivisa(conto.getValuta());
 		return contoCorrente;
 	}
