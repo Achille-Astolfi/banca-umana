@@ -10,6 +10,6 @@ import com.example.bancaumana.entity.Storico;
 
 public interface StoriciRepo {
 	
-	List<Storico> elencoStorici(String conto);
+	List<Storico> elencoStorici(String conto, int limit, int offset);
 
 }

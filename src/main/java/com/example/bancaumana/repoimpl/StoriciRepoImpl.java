@@ -38,7 +38,7 @@ public class StoriciRepoImpl extends JdbcDaoSupport implements StoriciRepo{
 	 * @since 2
 	 */
 	@Override
-	public List<Storico> elencoStorici(String conto) {
+	public List<Storico>elencoStorici(String conto, int limit, int offset) {
 		
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		StoricoRowMapper storicoRowMapper = new StoricoRowMapper();
@@ -47,10 +47,10 @@ public class StoriciRepoImpl extends JdbcDaoSupport implements StoriciRepo{
 				       "FROM storico              " +
                        "WHERE sto_numeroconto = ? " +
 				       "ORDER BY sto_id           " + 
-				       "LIMIT 5                   " + 
-				       "OFFSET 0                  " ;
+				       "LIMIT  ?                  " + 
+				       "OFFSET ?                  " ;
 		
-		List<Storico> lista = jdbcTemplate.query(query, storicoRowMapper, conto);
+		List<Storico> lista = jdbcTemplate.query(query, storicoRowMapper, conto,limit,offset);
 		return lista;
 	}
 	
