@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 import com.example.bancaumana.model.MovimentoModel;
 import com.example.bancaumana.repoimpl.MovimentiRepoImpl;
 import com.example.bancaumana.repoimpl.StoriciRepoImpl;
+import com.example.bancaumana.service.MovimentiService;
 
 @Service
-public class MovimentiServiceImpl {
+public class MovimentiServiceImpl implements MovimentiService{
 	
 	@Autowired
 	MovimentiRepoImpl movimentiRepository;
