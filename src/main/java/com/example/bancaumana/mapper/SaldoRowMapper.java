@@ -25,7 +25,7 @@ public class SaldoRowMapper implements RowMapper<Saldo> {
 		saldo.setnConto(rs.getString("sal_numeroconto"));
 		Date data = Utilities.parseDatabaseDate(rs.getString("sal_datasaldo"));
 		saldo.setDataSaldo(data);
-		saldo.setImpSaldo(rs.getBigDecimal("columnIndex"));
+		saldo.setImpSaldo(rs.getBigDecimal("sal_importosaldo"));
 		
 		// END set dei valori
 		return saldo;

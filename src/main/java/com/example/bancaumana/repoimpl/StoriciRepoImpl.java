@@ -45,8 +45,8 @@ public class StoriciRepoImpl extends JdbcDaoSupport {
 				       "FROM storico              " +
                        "WHERE sto_numeroconto = ? " +
 				       "ORDER BY sto_id           " + 
-				       "OFFSET 0 ROWS             " + 
-				       "FETCH NEXT 5 ROWS ONLY    " ;
+				       "LIMIT 5                   " + 
+				       "OFFSET 0                  " ;
 		
 		List<Storico> lista = jdbcTemplate.query(query, storicoRowMapper, conto);
 		return lista;
