@@ -34,8 +34,8 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 	public List<Movimento> elencoMovimenti(String conto) {
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		MovimentoRowMapper movimentoRowMapper = new MovimentoRowMapper();
-		List<Movimento> movimenti = jdbcTemplate.query("SELECT mov_importomovimento AS importo, mov_datamovimento AS data," + 
-		"mov_desmovimento AS descrizione FROM movimenti  WHERE mov_numeroconto = ?", movimentoRowMapper, conto);
+		List<Movimento> movimenti = jdbcTemplate.query("SELECT * FROM movimenti WHERE mov_numeroconto = ?", 
+														movimentoRowMapper, conto);
 		
 		return movimenti;
 	}
