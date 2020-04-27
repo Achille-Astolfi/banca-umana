@@ -37,6 +37,7 @@ public class StoriciRepoImpl extends JdbcDaoSupport implements StoricoRepo{
 	 * @return
 	 * @since 2
 	 */
+	
 	public List<Storico> elencoStorico(String conto) {
 		
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
