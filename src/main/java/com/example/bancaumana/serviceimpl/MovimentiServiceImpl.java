@@ -11,6 +11,7 @@ import com.example.bancaumana.entity.Storico;
 import com.example.bancaumana.model.MovimentoModel;
 import com.example.bancaumana.repo.MovimentiRepo;
 import com.example.bancaumana.repo.StoriciRepo;
+import com.example.bancaumana.repoimpl.StoriciRepoImpl;
 import com.example.bancaumana.service.MovimentiService;
 
 @Service
@@ -43,9 +44,16 @@ public class MovimentiServiceImpl implements MovimentiService{
 		return lista;	
 	}
 	
-	public List<MovimentoModel> getMovimentiStorico(String conto){
+	public List<MovimentoModel> getMovimentiStorico(String conto,int inizio, int fine){		
+		try {
+		List<Storico> movimenti=StoriciRepoImpl.elencoStorici(conto, inizio, fine);
+		List<MovimentoModel> storicoModel=fromStoricoToModel(movimenti);
+		//List<MovimentoModel> storicoModel.add;						
+		return storicoModel;		
+		} catch (Exception e) {
+			System.err.println("Impossibile connettersi al database");
+		}
 		
-		return null;
 	}
 	
 	public List<MovimentoModel> fromStoricoToModel(List<Storico> s) {
