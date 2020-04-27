@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package com.example.bancaumana.serviceImpl;
-=======
 package com.example.bancaumana.serviceimpl;
->>>>>>> branch 'master' of https://github.com/Achille-Astolfi/banca-umana.git
 
 import java.util.List;
 
