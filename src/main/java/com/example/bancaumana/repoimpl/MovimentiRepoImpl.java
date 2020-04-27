@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.bancaumana.entity.Movimento;
 import com.example.bancaumana.mapper.MovimentoRowMapper;
+import com.example.bancaumana.repo.MovimentiRepo;
 import com.example.bancaumana.util.Utilities;
 /**
  * 
@@ -20,7 +21,7 @@ import com.example.bancaumana.util.Utilities;
  *
  */
 @Repository
-public class MovimentiRepoImpl extends JdbcDaoSupport {
+public class MovimentiRepoImpl extends JdbcDaoSupport implements MovimentiRepo {
 	@Autowired
 	public MovimentiRepoImpl(DataSource dataSource) {
 		this.setDataSource(dataSource);
@@ -34,6 +35,7 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 
 	// BEGIN IO LAVORO QUI
 	// elenco movimenti per /movimenti/nConto
+	@Override
 	public List<Movimento> elencoMovimenti(String conto) {
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		MovimentoRowMapper movimentoRowMapper = new MovimentoRowMapper();
@@ -43,6 +45,7 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 		return movimenti;
 	}
 	// END IO LAVORO QUI
+	@Override
 	public BigDecimal sommaSaldo(String nConto, Date date) {
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		BigDecimal somma;
@@ -67,6 +70,7 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 	 * @author Jacopo
 	 * 
 	 */
+	@Override
 	public BigDecimal saldoDisponibile(String nConto) {
 		BigDecimal saldo = null;
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
