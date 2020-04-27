@@ -31,5 +31,10 @@ public class StoriciRepoImpl extends JdbcDaoSupport {
 			StoricoRowMapper storicoRowMapper = new StoricoRowMapper();
 			List<Storico> lista = jdbcTemplate.query("SELECT bla bla bla", storicoRowMapper, "param1", "param2");
 		}
+	
+	// BEGIN IO LAVORO QUI
+	
+	// END IO LAVORO QUI
+
 
 }
