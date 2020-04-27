@@ -11,8 +11,6 @@ import com.example.bancaumana.entity.Storico;
 import com.example.bancaumana.model.MovimentoModel;
 import com.example.bancaumana.repo.MovimentiRepo;
 import com.example.bancaumana.repo.StoriciRepo;
-import com.example.bancaumana.repoimpl.MovimentiRepoImpl;
-import com.example.bancaumana.repoimpl.StoriciRepoImpl;
 import com.example.bancaumana.service.MovimentiService;
 
 @Service
