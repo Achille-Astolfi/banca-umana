@@ -1,5 +1,7 @@
 package com.example.bancaumana.repoimpl;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.example.bancaumana.entity.Saldo;
 
 import com.example.bancaumana.mapper.SaldoRowMapper;
+import com.example.bancaumana.util.Utilities;
 
 
 /**
@@ -38,11 +41,14 @@ public class SaldiRepoImpl extends JdbcDaoSupport{
 	
 	public Saldo findBySaldo(String nSaldo) {
 		
+		
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		
 		SaldoRowMapper saldoRowMapper = new SaldoRowMapper();
 		
-		List<Saldo> saldo = jdbcTemplate.query("SELECT * FROM bancaumana.saldi where sal_numeroconto = ? " ,saldoRowMapper,nSaldo);
+		String data = "20200423";
+		List<Saldo> saldo = jdbcTemplate.query("SELECT * FROM bancaumana.saldi where sal_numeroconto AND sal_datasaldo = ? , ?" ,saldoRowMapper,nSaldo,data);
+		
 		if(saldo.size()>0) {
 			return saldo.get(0) ;
 		}else {
