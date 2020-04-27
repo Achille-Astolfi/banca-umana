@@ -29,4 +29,22 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 		List<Movimento> list = jdbcTemplate.query("", movimentoRowMapper, "", "");
 	}
 
+	// BEGIN IO LAVORO QUI
+	// elenco movimenti per /movimenti/nConto
+	
+	// END IO LAVORO QUI
+
+	
+	// BEGIN IO INVECE LAVORO QUI
+	// totale importo per saldo
+	
+	// END IO INVECE LAVORO QUI
+	
+	
+	// BEGIN IO INFINE LAVORO QUI
+	// totale importo per disponibile
+	
+	// END IO INFINE LAVORO QUI
+
+
 }

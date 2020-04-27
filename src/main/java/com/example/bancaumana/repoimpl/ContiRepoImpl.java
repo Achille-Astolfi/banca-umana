@@ -25,4 +25,8 @@ public class ContiRepoImpl extends JdbcDaoSupport {
 		List<Conto> list = jdbcTemplate.query("SELECT bla bla bla", contoRowMapper, "param1", "param2");
 	}
 
+	// BEGIN IO LAVORO QUI
+	
+	// END IO LAVORO QUI
+
 }

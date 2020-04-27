@@ -34,4 +34,8 @@ public class SaldiRepoImpl extends JdbcDaoSupport{
 		List<Saldo> list = jdbcTemplate.query("SELECT bla bla bla", saldoRowMapper, "param1", "param2");
 	}
 	
+	// BEGIN IO LAVORO QUI
+	
+	// END IO LAVORO QUI
+	
 }
