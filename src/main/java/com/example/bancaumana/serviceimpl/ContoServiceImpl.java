@@ -37,19 +37,11 @@ public class ContoServiceImpl implements ContoService {
 	public ContoModel findConto(String nConto) {
 		ContoModel contoCorrente=new ContoModel();
 		Conto conto = contiRepository.findByNumeroConto(nConto);
-		contoCorrente.setCc(conto.getnConto());
 		Date data = new GregorianCalendar(2020, 3, 23).getTime();
-		
-		// TODO :  sommaSaldo
+		contoCorrente.setCc(conto.getnConto());
 		contoCorrente.setSaldo(movimentiRepository.sommaSaldo(nConto, data));
-		
-		// TODO : saldo + fido
 		contoCorrente.setDisponibile(contoCorrente.getSaldo().add(conto.getFido()));
-		
 		contoCorrente.setDivisa(conto.getValuta());
-		
-		
-		
 		return contoCorrente;
 	}
 }
