@@ -1,10 +1,7 @@
 package com.example.bancaumana.repoimpl;
 
 import java.math.BigDecimal;
-<<<<<<< HEAD
 import java.util.Date;
-=======
->>>>>>> branch 'master' of https://github.com/Achille-Astolfi/banca-umana.git
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -16,11 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.bancaumana.entity.Movimento;
 import com.example.bancaumana.mapper.MovimentoRowMapper;
-<<<<<<< HEAD
 import com.example.bancaumana.util.Utilities;
-=======
-
->>>>>>> branch 'master' of https://github.com/Achille-Astolfi/banca-umana.git
 /**
  * 
  * @author Riccardo
@@ -32,28 +25,7 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 	public MovimentiRepoImpl(DataSource dataSource) {
 		this.setDataSource(dataSource);
 	}
-
-	public void dummy() {
-		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
-		MovimentoRowMapper movimentoRowMapper = new MovimentoRowMapper();
-		List<Movimento> list = jdbcTemplate.query("", movimentoRowMapper, "", "");
-	}
 	
-	
-	public BigDecimal sommaSaldo(String nConto, Date date) {
-		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
-		BigDecimal somma;
-		String data=Utilities.formatDateToString(date);
-		somma = jdbcTemplate.queryForObject("SELECT * SUM(COALESCE(mov_importomovimento, 0)) AS saldo"
-				+ "FROM movimenti\r\n" +  
-				"WHERE mov_datamovimento = ? AND mov_stato != 0" + 
-				"AND mov_numeroconto = ?", BigDecimal.class,data,nConto );
-		if(somma!=null)
-			return somma;
-		else
-			return BigDecimal.ZERO;
-	}
-
 	/**
 	 * 
 	 * @author Laura
@@ -74,9 +46,23 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 
 	// BEGIN IO INVECE LAVORO QUI
 	// totale importo per saldo
-
+	public BigDecimal sommaSaldo(String nConto, Date date) {
+		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
+		BigDecimal somma;
+		String data=Utilities.formatDateToString(date);
+		somma = jdbcTemplate.queryForObject("SELECT * SUM(COALESCE(mov_importomovimento, 0)) AS saldo"
+				+ "FROM movimenti\r\n" +  
+				"WHERE mov_datamovimento = ? AND mov_stato != 0" + 
+				"AND mov_numeroconto = ?", BigDecimal.class,data,nConto );
+		if(somma!=null)
+			return somma;
+		else
+			return BigDecimal.ZERO;
+	}
 	// END IO INVECE LAVORO QUI
 
+	// BEGIN IO INFINE LAVORO QUI
+	// totale importo per disponibile
 	/**
 	 * @author Jacopo
 	 * 
@@ -92,5 +78,6 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 		}
 		return saldo;
 	}
+	// END IO INFINE LAVORO QUI
 
 }
