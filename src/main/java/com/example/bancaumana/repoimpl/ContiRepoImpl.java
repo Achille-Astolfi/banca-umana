@@ -28,8 +28,9 @@ public class ContiRepoImpl extends JdbcDaoSupport {
 	// BEGIN IO LAVORO QUI
 	public Conto findByNumeroConto(String numeroConto) {
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
-		Conto conto = jdbcTemplate.queryForObject("SELECT * FROM bancaumana.conti where con_numeroconto like ? " ,Conto.class,numeroConto);
-		return conto ;
+		ContoRowMapper contoRowMapper = new ContoRowMapper();
+		List<Conto> conto = jdbcTemplate.query("SELECT * FROM bancaumana.conti where con_numeroconto like ? " ,contoRowMapper,numeroConto);
+		return conto.get(0) ;
 	}
 	// END IO LAVORO QUI
 
