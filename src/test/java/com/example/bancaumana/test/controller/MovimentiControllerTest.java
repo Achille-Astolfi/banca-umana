@@ -27,14 +27,14 @@ public class MovimentiControllerTest {
 		mockMvc.perform(get("/movimenti/310020200004")//
 				.accept(MediaType.APPLICATION_JSON))//
 				.andExpect(status().isOk())//
-				.andExpect(jsonPath("$._links.next").exists());
+				.andExpect(jsonPath("$._links.conto").exists());
 	}
 
 	@Test
 	public void getMovimentiNextTest() throws Exception {
-		mockMvc.perform(get("/movimenti/310020200003/1")//
+		mockMvc.perform(get("/movimenti/310020200001/0")//
 				.accept(MediaType.APPLICATION_JSON))//
 				.andExpect(status().isOk())//
-				.andExpect(jsonPath("$._links.conto").exists());
+				.andExpect(jsonPath("$._links.next").exists());
 	}
 }
