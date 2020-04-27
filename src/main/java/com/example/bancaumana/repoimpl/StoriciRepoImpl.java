@@ -15,7 +15,7 @@ import com.example.bancaumana.mapper.StoricoRowMapper;
 /**
  * 
  * @author Ayoub
- * @author rikkizz(per l'implementazione del dummy->getStorico())
+ * @author rikkizz(per l'implementazione del dummy->elencoStorico())
  *
  */
 
@@ -35,20 +35,16 @@ public class StoriciRepoImpl extends JdbcDaoSupport {
 		}
 	
 	// BEGIN IO LAVORO QUI
-	public List<Storico> getStorico() {
+	public List<Storico> elencoStorico(String conto) {
 		
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		StoricoRowMapper storicoRowMapper = new StoricoRowMapper();
 		
-		String query = "SELECT sto_numeroconto,      " +
-				               "sto_importomovimento," +
-				               "sto_datamovimento,   " +
-				               "sto_oramovimento     " +
-				               "sto_desmovimento     " +
-				               "sto_causale          " +
-				               "FROM storico         " ;
+		String query = "SELECT *                 " +
+				       "FROM storico             " +
+                       "WHERE sto_numeroconto = ?" ;
 		
-		List<Storico> lista = jdbcTemplate.query(query, storicoRowMapper);
+		List<Storico> lista = jdbcTemplate.query(query, storicoRowMapper, conto);
 		return lista;
 	}
 	
