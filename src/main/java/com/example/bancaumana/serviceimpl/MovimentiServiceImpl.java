@@ -1,4 +1,4 @@
-package com.example.bancaumana.serviceImpl;
+package com.example.bancaumana.serviceimpl;
 
 import java.util.List;
 
