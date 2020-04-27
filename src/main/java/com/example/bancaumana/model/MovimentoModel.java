@@ -11,13 +11,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class MovimentoModel {
 
 	
-	@JsonProperty
+	@JsonProperty("movimenti")
 	String movimenti;
-	@JsonProperty
+	@JsonProperty("importo")
 	BigDecimal importo;
-	@JsonProperty
+	@JsonProperty("data")
 	Date data;
-	@JsonProperty
+	@JsonProperty("descrizione")
 	String descrizione;
 	
 	
@@ -45,7 +45,5 @@ public class MovimentoModel {
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
 	}
-	
-
 
 }
