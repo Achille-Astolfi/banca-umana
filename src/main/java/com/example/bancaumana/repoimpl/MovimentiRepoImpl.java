@@ -29,6 +29,11 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 		MovimentoRowMapper movimentoRowMapper = new MovimentoRowMapper();
 		List<Movimento> list = jdbcTemplate.query("", movimentoRowMapper, "", "");
 	}
+	/**
+	 * 
+	 * @author Laura
+	 * 
+	 */
 
 	// BEGIN IO LAVORO QUI
 	// elenco movimenti per /movimenti/nConto
@@ -40,7 +45,6 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 		
 		return movimenti;
 	}
-	
 	// END IO LAVORO QUI
 
 	
