@@ -29,21 +29,19 @@ public class MovimentiServiceImpl implements MovimentiService{
 		return null;
 	}
 	
-	public List<MovimentoModel> ConvertToListModel(List<Movimento> list)
+	public List<MovimentoModel> convertToListModel(List<Movimento> list)
 	{
 		List<MovimentoModel> lista =new ArrayList<>();
-		MovimentoModel mModel=new MovimentoModel();
+		MovimentoModel mModel;
 		for (Movimento m: list)
 		{
+			mModel=new MovimentoModel();
 			mModel.setData(m.getDataMovimento());
 			mModel.setDescrizione(m.getDescrizione());
 			mModel.setImporto(m.getImpMovimento());
 			lista.add(mModel);
 		}
-		if (lista.size()==0)
-			return null;
-		else
-			return lista;	
+		return lista;	
 	}
 	
 	public List<MovimentoModel> getMovimentiStorico(String conto){
