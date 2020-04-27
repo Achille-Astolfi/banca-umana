@@ -7,9 +7,7 @@ import com.example.bancaumana.model.ContoModel;
 import com.example.bancaumana.repo.ContiRepo;
 import com.example.bancaumana.repo.MovimentiRepo;
 import com.example.bancaumana.repo.SaldiRepo;
-import com.example.bancaumana.repoimpl.ContiRepoImpl;
-import com.example.bancaumana.repoimpl.MovimentiRepoImpl;
-import com.example.bancaumana.repoimpl.SaldiRepoImpl;
+import com.example.bancaumana.service.ContoService;
 
 /**
  * 
@@ -17,7 +15,7 @@ import com.example.bancaumana.repoimpl.SaldiRepoImpl;
  *
  */
 @Service("contoService")
-public class ContoServiceImpl {
+public class ContoServiceImpl implements ContoService {
 	
 	@Autowired
 	private MovimentiRepo movimentiRepository;
@@ -30,6 +28,7 @@ public class ContoServiceImpl {
 	
 
 	
+	@Override
 	public ContoModel findConto(String nConto) {
 		ContoModel contoCorrente=new ContoModel();
 		
