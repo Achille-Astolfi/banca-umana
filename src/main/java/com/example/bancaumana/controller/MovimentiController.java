@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,15 +30,17 @@ public class MovimentiController {
 		MovimentiResources resource =  null;
 		List<MovimentoModel> movimenti = new ArrayList<>();
 		
+		HttpStatus status = null;
+		
 		try {
-			
-			
-			
+			movimenti = movimentiService.getMovimenti(conto);
+			resource = new MovimentiResources(movimenti);
+			status = HttpStatus.OK;
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		
-		return null;
+		return new ResponseEntity<MovimentiResources>(resource, status);
 	}
 	
 	@GetMapping("/{conto}/{id}")
