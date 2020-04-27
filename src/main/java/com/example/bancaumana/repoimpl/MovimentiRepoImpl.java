@@ -57,12 +57,10 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 	public BigDecimal saldoDisponibile(String nConto) {
 	BigDecimal saldo = null;
 	JdbcTemplate jdbcTemplate = this.getJdbcTemplate();	
-	saldo =jdbcTemplate.queryForObject("SELECT *\n SUM(COALESCE(mov_importomovimento, 0))" + 
-			"FROM saldi\r\n" + 
-			"WHERE mov_stato = 2 or (mov_stato = 1 AND mov_importomovimento < 0) "
-			+ "movimenti ON ? = sal_numeroconto"
-			+ "GROUP BY sal_id, sal_numeroconto, sal_datasaldo",
-			 BigDecimal.class, nConto);
+	saldo =jdbcTemplate.queryForObject("SELECT * SUM(COALESCE(mov_importomovimento, 0))" + 
+			"FROM movimenti\r\n" + 
+			"WHERE (mov_stato = 2 or mov_stato = 1 AND mov_importomovimento < 0) "
+			+ "AND ? = sal_numeroconto", BigDecimal.class, nConto);
 	
 	return saldo;
 	}
