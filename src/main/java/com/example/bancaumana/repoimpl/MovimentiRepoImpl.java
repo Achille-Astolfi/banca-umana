@@ -44,9 +44,9 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		BigDecimal somma;
 		String data=Utilities.formatDateToString(date);
-		somma = jdbcTemplate.queryForObject("SELECT * SUM(COALESCE(mov_importomovimento, 0)) AS saldo"
-				+ "FROM movimenti\r\n" +  
-				"WHERE mov_datamovimento = ? AND mov_stato != 0" + 
+		somma = jdbcTemplate.queryForObject("SELECT SUM(COALESCE(mov_importomovimento, 0)) AS saldo "
+				+ "FROM movimenti \r\n" +  
+				"WHERE mov_datamovimento = ? AND mov_stato != 0 " + 
 				"AND mov_numeroconto = ?", BigDecimal.class,data,nConto );
 		if(somma!=null)
 			return somma;
