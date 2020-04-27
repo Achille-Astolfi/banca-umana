@@ -1,5 +1,7 @@
 package com.example.bancaumana.serviceimpl;
 
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,11 +38,16 @@ public class ContoServiceImpl implements ContoService {
 		ContoModel contoCorrente=new ContoModel();
 		Conto conto = contiRepository.findByNumeroConto(nConto);
 		contoCorrente.setCc(conto.getnConto());
-		// TODO : oggi + disponibile + fido
-		contoCorrente.setDisponibile(movimentiRepository.saldoDisponibile(nConto));
+		Date data = new GregorianCalendar(2020, 3, 23).getTime();
+		
+		// TODO :  sommaSaldo
+		contoCorrente.setSaldo(movimentiRepository.sommaSaldo(nConto, data));
+		
+		// TODO : saldo + fido
+		contoCorrente.setDisponibile(contoCorrente.getSaldo().add(conto.getFido()));
+		
 		contoCorrente.setDivisa(conto.getValuta());
-		// TODO : oggi + saldo
-		contoCorrente.setSaldo(movimentiRepository.sommaSaldo(nConto, new GregorianCalendar(2020, 3, 23).getTime()));
+		
 		
 		
 		return contoCorrente;
