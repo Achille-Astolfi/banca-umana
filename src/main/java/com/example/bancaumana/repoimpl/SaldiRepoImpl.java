@@ -1,7 +1,5 @@
 package com.example.bancaumana.repoimpl;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -12,9 +10,8 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
 import com.example.bancaumana.entity.Saldo;
-
 import com.example.bancaumana.mapper.SaldoRowMapper;
-import com.example.bancaumana.util.Utilities;
+import com.example.bancaumana.repo.SaldiRepo;
 
 /**
  *
@@ -23,7 +20,7 @@ import com.example.bancaumana.util.Utilities;
  */
 
 @Repository
-public class SaldiRepoImpl extends JdbcDaoSupport {
+public class SaldiRepoImpl extends JdbcDaoSupport implements SaldiRepo {
 
 	@Autowired
 	public SaldiRepoImpl(DataSource dataSource) {
