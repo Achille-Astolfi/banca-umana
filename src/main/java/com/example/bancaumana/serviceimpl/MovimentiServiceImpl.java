@@ -7,11 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.bancaumana.entity.Movimento;
+import com.example.bancaumana.entity.Storico;
 import com.example.bancaumana.model.MovimentoModel;
 import com.example.bancaumana.repo.MovimentiRepo;
 import com.example.bancaumana.repo.StoriciRepo;
-import com.example.bancaumana.repoimpl.MovimentiRepoImpl;
-import com.example.bancaumana.repoimpl.StoriciRepoImpl;
 import com.example.bancaumana.service.MovimentiService;
 
 @Service
@@ -49,4 +48,25 @@ public class MovimentiServiceImpl implements MovimentiService{
 		return null;
 	}
 	
+	public List<MovimentoModel> fromStoricoToModel(List<Storico> s) {
+		
+		List<MovimentoModel> list = new ArrayList<>();
+		
+		
+		for(Storico sto: s) {
+			MovimentoModel mm = new MovimentoModel(); 
+			mm.setData(sto.getDataMovimento());
+			mm.setImporto(sto.getImpMovimento());
+			mm.setDescrizione(sto.getDescrizione());
+			
+			list.add(mm);
+			
+		}
+			
+	return list;
+	}
 }
+
+
+	
+

@@ -1,8 +1,13 @@
 package com.example.bancaumana.serviceimpl;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.bancaumana.entity.Conto;
 import com.example.bancaumana.model.ContoModel;
 import com.example.bancaumana.repo.ContiRepo;
 import com.example.bancaumana.repo.MovimentiRepo;
@@ -31,7 +36,12 @@ public class ContoServiceImpl implements ContoService {
 	@Override
 	public ContoModel findConto(String nConto) {
 		ContoModel contoCorrente=new ContoModel();
-		
-		return null;
+		Conto conto = contiRepository.findByNumeroConto(nConto);
+		Date data = new GregorianCalendar(2020, 3, 23).getTime();
+		contoCorrente.setCc(conto.getnConto());
+		contoCorrente.setSaldo(movimentiRepository.sommaSaldo(nConto, data));
+		contoCorrente.setDisponibile(contoCorrente.getSaldo().add(conto.getFido()));
+		contoCorrente.setDivisa(conto.getValuta());
+		return contoCorrente;
 	}
 }
