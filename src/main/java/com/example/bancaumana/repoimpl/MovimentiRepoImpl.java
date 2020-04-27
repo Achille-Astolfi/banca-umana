@@ -1,5 +1,6 @@
 package com.example.bancaumana.repoimpl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -28,10 +29,22 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 		MovimentoRowMapper movimentoRowMapper = new MovimentoRowMapper();
 		List<Movimento> list = jdbcTemplate.query("", movimentoRowMapper, "", "");
 	}
+	/**
+	 * 
+	 * @author Laura
+	 * 
+	 */
 
 	// BEGIN IO LAVORO QUI
 	// elenco movimenti per /movimenti/nConto
-	
+	public List<Movimento> elencoMovimenti(String conto) {
+		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
+		MovimentoRowMapper movimentoRowMapper = new MovimentoRowMapper();
+		List<Movimento> movimenti = jdbcTemplate.query("SELECT * FROM movimenti WHERE mov_numeroconto = ?", 
+														movimentoRowMapper, conto);
+		
+		return movimenti;
+	}
 	// END IO LAVORO QUI
 
 	
@@ -41,10 +54,21 @@ public class MovimentiRepoImpl extends JdbcDaoSupport {
 	// END IO INVECE LAVORO QUI
 	
 	
-	// BEGIN IO INFINE LAVORO QUI
-	// totale importo per disponibile
+	/**
+	 * @author Jacopo
+	 * 
+	 */
+	public BigDecimal saldoDisponibile(String nConto) {
+	BigDecimal saldo = null;
+	JdbcTemplate jdbcTemplate = this.getJdbcTemplate();	
+	saldo =jdbcTemplate.queryForObject("SELECT *\n SUM(COALESCE(mov_importomovimento, 0))" + 
+			"FROM saldi\r\n" + 
+			"WHERE mov_stato = 2 or (mov_stato = 1 AND mov_importomovimento < 0) "
+			+ "movimenti ON ? = sal_numeroconto"
+			+ "GROUP BY sal_id, sal_numeroconto, sal_datasaldo",
+			 BigDecimal.class, nConto);
 	
-	// END IO INFINE LAVORO QUI
-
+	return saldo;
+	}
 
 }
