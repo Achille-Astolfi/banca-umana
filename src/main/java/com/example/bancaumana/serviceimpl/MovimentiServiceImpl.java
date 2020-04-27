@@ -40,7 +40,10 @@ public class MovimentiServiceImpl implements MovimentiService{
 			mModel.setImporto(m.getImpMovimento());
 			lista.add(mModel);
 		}
-		return lista;	
+		if (lista.size()==0)
+			return null;
+		else
+			return lista;	
 	}
 	
 	public List<MovimentoModel> getMovimentiStorico(String conto){
