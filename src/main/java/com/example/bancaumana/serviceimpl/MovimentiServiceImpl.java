@@ -11,74 +11,60 @@ import com.example.bancaumana.entity.Storico;
 import com.example.bancaumana.model.MovimentoModel;
 import com.example.bancaumana.repo.MovimentiRepo;
 import com.example.bancaumana.repo.StoriciRepo;
-import com.example.bancaumana.repoimpl.StoriciRepoImpl;
 import com.example.bancaumana.service.MovimentiService;
 
 @Service
-public class MovimentiServiceImpl implements MovimentiService{
-	
+public class MovimentiServiceImpl implements MovimentiService {
+
 	@Autowired
 	private MovimentiRepo movimentiRepository;
-	
+
 	@Autowired
 	private StoriciRepo storiciRepository;
-	
-	
-	public List<MovimentoModel> getMovimenti(String conto){
-		
+
+	public List<MovimentoModel> getMovimenti(String conto) {
+
 		List<Movimento> listaMovimento = movimentiRepository.elencoMovimenti(conto);
-		
+
 		List<MovimentoModel> listaMovimentoModel = convertToListModel(listaMovimento);
-		
+
 		return listaMovimentoModel;
 	}
-	
-	public List<MovimentoModel> convertToListModel(List<Movimento> list)
-	{
-		List<MovimentoModel> lista =new ArrayList<>();
+
+	public List<MovimentoModel> convertToListModel(List<Movimento> list) {
+		List<MovimentoModel> lista = new ArrayList<>();
 		MovimentoModel mModel;
-		for (Movimento m: list)
-		{
-			mModel=new MovimentoModel();
+		for (Movimento m : list) {
+			mModel = new MovimentoModel();
 			mModel.setData(m.getDataMovimento());
 			mModel.setDescrizione(m.getDescrizione());
 			mModel.setImporto(m.getImpMovimento());
 			lista.add(mModel);
 		}
-		return lista;	
+		return lista;
 	}
-	
-	public List<MovimentoModel> getMovimentiStorico(String conto,int inizio, int fine){		
-		try {
-		List<Storico> movimenti=StoriciRepoImpl.elencoStorici(conto, inizio, fine);
-		List<MovimentoModel> storicoModel=fromStoricoToModel(movimenti);
-		//List<MovimentoModel> storicoModel.add;						
-		return storicoModel;		
-		} catch (Exception e) {
-			System.err.println("Impossibile connettersi al database");
-		}
-		
+
+	public List<MovimentoModel> getMovimentiStorico(String conto, int inizio, int fine) {
+
+		List<Storico> movimenti = storiciRepository.elencoStorici(conto, inizio, fine);
+		List<MovimentoModel> storicoModel = fromStoricoToModel(movimenti);
+		return storicoModel;
 	}
-	
+
 	public List<MovimentoModel> fromStoricoToModel(List<Storico> s) {
-		
+
 		List<MovimentoModel> list = new ArrayList<>();
-		
-		
-		for(Storico sto: s) {
-			MovimentoModel mm = new MovimentoModel(); 
+
+		for (Storico sto : s) {
+			MovimentoModel mm = new MovimentoModel();
 			mm.setData(sto.getDataMovimento());
 			mm.setImporto(sto.getImpMovimento());
 			mm.setDescrizione(sto.getDescrizione());
-			
+
 			list.add(mm);
-			
+
 		}
-			
-	return list;
+
+		return list;
 	}
 }
-
-
-	
-
