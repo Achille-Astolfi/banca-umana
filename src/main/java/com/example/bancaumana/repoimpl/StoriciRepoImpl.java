@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.bancaumana.entity.Storico;
 import com.example.bancaumana.mapper.StoricoRowMapper;
+import com.example.bancaumana.repo.StoriciRepo;
 
 /**
  * 
@@ -22,7 +23,7 @@ import com.example.bancaumana.mapper.StoricoRowMapper;
  */
 
 @Repository
-public class StoriciRepoImpl extends JdbcDaoSupport {
+public class StoriciRepoImpl extends JdbcDaoSupport implements StoriciRepo{
 		
 	@Autowired
 	public StoriciRepoImpl(DataSource dataSource) {
@@ -36,7 +37,8 @@ public class StoriciRepoImpl extends JdbcDaoSupport {
 	 * @return
 	 * @since 2
 	 */
-	public List<Storico> elencoStorico(String conto) {
+	@Override
+	public List<Storico> elencoStorici(String conto) {
 		
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		StoricoRowMapper storicoRowMapper = new StoricoRowMapper();
