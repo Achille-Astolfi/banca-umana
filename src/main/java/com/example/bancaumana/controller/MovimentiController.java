@@ -28,7 +28,7 @@ public class MovimentiController {
 	}
 	
 	@GetMapping("/{conto}/{id}")
-	public MovimentiResources getMovimenti(@PathVariable("conto") String conto, @PathVariable("id") int id) {
+	public MovimentiResources getMovimentiStorico(@PathVariable("conto") String conto, @PathVariable("id") int id) {
 		MovimentiResources resource =  new MovimentiResources();
 		
 		try {
