@@ -11,7 +11,11 @@ import org.springframework.stereotype.Repository;
 
 import com.example.bancaumana.entity.Conto;
 import com.example.bancaumana.mapper.ContoRowMapper;
-
+/**
+ * 
+ * @author Petrut
+ *
+ */
 @Repository
 public class ContiRepoImpl extends JdbcDaoSupport {
 	@Autowired
@@ -19,12 +23,6 @@ public class ContiRepoImpl extends JdbcDaoSupport {
 		this.setDataSource(dataSource);
 	}
 	
-	public void dummy() {
-		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
-		ContoRowMapper contoRowMapper = new ContoRowMapper();
-		List<Conto> list = jdbcTemplate.query("SELECT bla bla bla", contoRowMapper, "param1", "param2");
-	}
-
 	// BEGIN IO LAVORO QUI
 	public Conto findByNumeroConto(String numeroConto) {
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
