@@ -36,9 +36,7 @@ public class MovimentiServiceImpl {
 			mModel.setImporto(m.getImpMovimento());
 			lista.add(mModel);
 		}
-		if (lista)
-		return lista;
-		
+		return lista;	
 	}
 	
 	public List<MovimentoModel> getMovimentiStorico(String conto){
