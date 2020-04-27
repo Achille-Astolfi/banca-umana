@@ -26,7 +26,11 @@ public class MovimentiServiceImpl implements MovimentiService{
 	
 	public List<MovimentoModel> getMovimenti(String conto){
 		
-		return null;
+		List<Movimento> listaMovimento = movimentiRepository.elencoMovimenti(conto);
+		
+		List<MovimentoModel> listaMovimentoModel = convertToListModel(listaMovimento);
+		
+		return listaMovimentoModel;
 	}
 	
 	public List<MovimentoModel> convertToListModel(List<Movimento> list)
