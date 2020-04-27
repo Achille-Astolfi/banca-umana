@@ -9,13 +9,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.stereotype.Repository;
 
-import com.example.bancaumana.entity.Conto;
+
 import com.example.bancaumana.entity.Saldo;
-import com.example.bancaumana.mapper.ContoRowMapper;
+
 import com.example.bancaumana.mapper.SaldoRowMapper;
 
+
 /**
- * 
+ *
  * @author stefano
  *
  */
@@ -23,6 +24,7 @@ import com.example.bancaumana.mapper.SaldoRowMapper;
 @Repository
 public class SaldiRepoImpl extends JdbcDaoSupport{
 	
+
 	@Autowired
 	public SaldiRepoImpl(DataSource dataSource) {
 		this.setDataSource(dataSource);
@@ -34,8 +36,26 @@ public class SaldiRepoImpl extends JdbcDaoSupport{
 		List<Saldo> list = jdbcTemplate.query("SELECT bla bla bla", saldoRowMapper, "param1", "param2");
 	}
 	
-	// BEGIN IO LAVORO QUI
-	
-	// END IO LAVORO QUI
+	public Saldo findBySaldo(String nSaldo) {
+		
+		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
+		
+		SaldoRowMapper saldoRowMapper = new SaldoRowMapper();
+		
+		List<Saldo> saldo = jdbcTemplate.query("SELECT * FROM bancaumana.saldi where sal_numeroconto = ? " ,saldoRowMapper,nSaldo);
+		if(saldo.size()>0) {
+			return saldo.get(0) ;
+		}else {
+			return null;
+		}
+		
+
+	}
 	
 }
+
+	// BEGIN IO LAVORO QU
+
+	// END IO LAVORO QUI
+	
+
