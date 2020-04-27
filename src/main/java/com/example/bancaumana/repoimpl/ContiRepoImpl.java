@@ -11,13 +11,14 @@ import org.springframework.stereotype.Repository;
 
 import com.example.bancaumana.entity.Conto;
 import com.example.bancaumana.mapper.ContoRowMapper;
+import com.example.bancaumana.repo.ContiRepo;
 /**
  * 
  * @author Petrut
  *
  */
 @Repository
-public class ContiRepoImpl extends JdbcDaoSupport {
+public class ContiRepoImpl extends JdbcDaoSupport implements ContiRepo{
 	@Autowired
 	public ContiRepoImpl(DataSource dataSource) {
 		this.setDataSource(dataSource);
