@@ -29,7 +29,7 @@ public class ContiRepoImpl extends JdbcDaoSupport {
 	public Conto findByNumeroConto(String numeroConto) {
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		ContoRowMapper contoRowMapper = new ContoRowMapper();
-		List<Conto> conto = jdbcTemplate.query("SELECT * FROM bancaumana.conti where con_numeroconto like ? " ,contoRowMapper,numeroConto);
+		List<Conto> conto = jdbcTemplate.query("SELECT * FROM bancaumana.conti where con_numeroconto = ? Limit 2" ,contoRowMapper,numeroConto);
 		if(conto.size()>0) {
 			return conto.get(0) ;
 		}else {
