@@ -39,12 +39,16 @@ public class MovimentiRepoImpl extends JdbcDaoSupport implements MovimentiRepo {
 	public List<Movimento> elencoMovimenti(String conto) {
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
 		MovimentoRowMapper movimentoRowMapper = new MovimentoRowMapper();
-		List<Movimento> movimenti = jdbcTemplate.query("SELECT * FROM movimenti WHERE mov_numeroconto = ?",
-				movimentoRowMapper, conto);
+		String oggi = "20200423";
+		List<Movimento> movimenti = jdbcTemplate.query("SELECT * FROM movimenti WHERE mov_numeroconto = ? AND mov_datamovimento=? AND mov_stato!=0",
+				movimentoRowMapper, conto, oggi);
 
 		return movimenti;
 	}
 	// END IO LAVORO QUI
+
+	// BEGIN IO INVECE LAVORO QUI
+	// totale importo per saldo
 	@Override
 	public BigDecimal sommaSaldo(String nConto, Date date) {
 		JdbcTemplate jdbcTemplate = this.getJdbcTemplate();
@@ -59,9 +63,6 @@ public class MovimentiRepoImpl extends JdbcDaoSupport implements MovimentiRepo {
 		else
 			return BigDecimal.ZERO;
 	}
-	// BEGIN IO INVECE LAVORO QUI
-	// totale importo per saldo
-
 	// END IO INVECE LAVORO QUI
 
 	// BEGIN IO INFINE LAVORO QUI
