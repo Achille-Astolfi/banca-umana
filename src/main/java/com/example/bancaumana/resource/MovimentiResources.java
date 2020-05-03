@@ -16,8 +16,10 @@ public class MovimentiResources extends Resources<MovimentoModel> {
 		super();
 	}
 
-	public MovimentiResources(List<MovimentoModel> list) {
-		super(list);
+	
+
+	public MovimentiResources(List<MovimentoModel> movimenti) {
+		super(movimenti);
 	}
 
 	public void computeLinks(String cc) {
